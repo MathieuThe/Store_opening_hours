@@ -58,9 +58,13 @@ namespace Store_opening_hours
                         break;
                 }
 
+                Console.WriteLine("\n\n========================= \n\n\n");
+
+                Console.ReadKey();
+
             }
 
-          
+
             Console.ReadKey();
         }
 
@@ -74,10 +78,85 @@ namespace Store_opening_hours
 
         }
 
+
+
+
+
+
+
+
+
+        //Create a new openingDay.
+        //To create it, we need its name and its time slot (opening time, closing time).
         private static void NewOpeningDay()
         {
+            bool canStop = false;
+            
+            Console.WriteLine("You are here to create a new day that will be open for your store.");
+
+            Console.WriteLine("First you have to choose the day :");
+            Console.WriteLine(" ** Weekdays **");
+            Console.WriteLine("1 - Monday");
+            Console.WriteLine("2 - Tuesday");
+            Console.WriteLine("3 - Wednesday");
+            Console.WriteLine("4 - Thursday");
+            Console.WriteLine("5 - Friday");
+            Console.WriteLine(" ** Weekend ** ");
+            Console.WriteLine("6 - Saturday");
+            Console.WriteLine("7 - Sunday");
+
+            string option = Console.ReadLine();
+
+
+            //debug
+            Console.WriteLine("you choose the option : " + option);
+
+            switch (option)
+            {
+                case "1":
+                    DisplayDaysOpened();
+                    break;
+
+                case "2":
+                    NewOpeningDay();
+                    break;
+
+                case "3":
+                    SearchForOpenedDay();
+                    break;
+
+                case "4":
+                    SearchForNextOpeningDate();
+                    break;
+
+                //If the option is 'q', we set the variable Stop to true
+                case "Q":
+                case "q":
+                    Console.WriteLine("you have chosen to close the program.");
+                    stop = true;
+                    break;
+
+
+                default:
+                    Console.WriteLine("your entry is incorrect, please try again...");
+                    break;
+            }
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         //Display all days opened
         private static void DisplayDaysOpened()
