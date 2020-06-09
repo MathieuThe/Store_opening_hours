@@ -73,10 +73,45 @@ namespace Store_opening_hours
 
         private static void SearchForNextOpeningDate()
         {
-            Console.WriteLine("You are here to search for the opening day");
+            Console.WriteLine("You are here to search for the next opening day");
+            Console.WriteLine("Exemple : Thursday");
+
+            string date = Console.ReadLine();
+
+            //Read the list and search into-it if there is a match (if there, we display the next day)
+            //If there is no match, we send a message
+            if (!NextOpeningDate(date))
+            {
+                Console.WriteLine("Sorry, we find nothing about this date.");
+            }
 
         }
 
+        private static bool NextOpeningDate(string date)
+        {
+            //If we find something we could track back the information
+            bool hasFindSomething = false;
+
+            for (int i = 0; i < Days_list.Count; i++)
+            {            
+                //If there's a match (exemple : afternon_MONDAY for monday), we display it
+                if (Regex.IsMatch(date, Days_list[i].GetDayName))
+                {
+                    //Avoid stack overflow problem
+                    if(i < Days_list.Count - 1)
+                    {
+                        Console.WriteLine(Days_list[i + 1].GetDayName + " : " + Days_list[i + 1].GetOpeningHour + " - " + Days_list[i + 1].GetClosingHour);
+                        hasFindSomething = true;
+                    }
+                }
+            }
+
+            return hasFindSomething;
+        }
+
+        /// <summary>
+        /// search for an opening day
+        /// </summary>
         private static void SearchForOpenedDay()
         {
             Console.WriteLine("Are you here to find out if the day you want is open ?");
@@ -92,6 +127,8 @@ namespace Store_opening_hours
             }
         }
 
+        //find the opening day and display-it 
+        //return too a bool to know if it was a match or.. no
         private static bool IsOpenOn(string date)
         {
             //if we find something we could track back the information
