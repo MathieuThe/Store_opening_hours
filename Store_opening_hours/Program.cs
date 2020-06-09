@@ -25,10 +25,10 @@ namespace Store_opening_hours
 
                 //Display All Options 
                 Console.WriteLine("Please, choose an option.\n");
-                Console.WriteLine("1 - Display all days opened");
-                Console.WriteLine("2 - Adds a new open day");
-                Console.WriteLine("3 - Is my day open ?");
-                Console.WriteLine("4 - Search for the next opening date ? \n");
+                Console.WriteLine("1 - Display all opening days");
+                Console.WriteLine("2 - Add a new opening day");
+                Console.WriteLine("3 - Is that day an openning day ?");
+                Console.WriteLine("4 - Search for the next opening date \n");
                 Console.WriteLine("q - Leave the program \n\n");
 
                 string option = Console.ReadLine();
