@@ -107,40 +107,46 @@ namespace Store_opening_hours
 
             string option = Console.ReadLine();
 
-
             //debug
             Console.WriteLine("you choose the option : " + option);
 
+            //lets choose the day name to the user
+            string dayName = "";
             switch (option)
             {
                 case "1":
-                    DisplayDaysOpened();
                     break;
 
                 case "2":
-                    NewOpeningDay();
                     break;
 
                 case "3":
-                    SearchForOpenedDay();
                     break;
 
                 case "4":
-                    SearchForNextOpeningDate();
                     break;
 
-                //If the option is 'q', we set the variable Stop to true
-                case "Q":
-                case "q":
-                    Console.WriteLine("you have chosen to close the program.");
-                    stop = true;
+                case "5":
                     break;
 
+                case "6":
+                    break;
+
+                case "7":
+                    break;
 
                 default:
                     Console.WriteLine("your entry is incorrect, please try again...");
                     break;
             }
+
+
+
+
+            //lets choose the opening day to the user
+            
+            
+            //lets choose the closing day to the user
 
         }
 
