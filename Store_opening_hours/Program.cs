@@ -12,9 +12,12 @@ namespace Store_opening_hours
             while (!stop)
             {
                 //Display All Options 
-                Console.WriteLine("Please, choose an option.");
+                Console.WriteLine("Please, choose an option.\n");
                 Console.WriteLine("1 - Display all days opened");
-                Console.WriteLine("q - Leave the program");
+                Console.WriteLine("2 - Adds a new open day");
+                Console.WriteLine("3 - Is my day open ?");
+                Console.WriteLine("4 - Search for the next opening date ? \n");
+                Console.WriteLine("q - Leave the program \n\n");
 
                 // .... 
 
@@ -30,6 +33,17 @@ namespace Store_opening_hours
                         DisplayDaysOpened();
                         break;
 
+                    case "2":
+                        NewOpeningDay();
+                        break;
+
+                    case "3":
+                        SearchForOpenedDay();
+                        break;
+
+                    case "4":
+                        SearchForNextOpeningDate();
+                        break;
 
                     //If the option is 'q', we set the variable Stop to true
                     case "Q":
@@ -48,6 +62,21 @@ namespace Store_opening_hours
 
           
             Console.ReadKey();
+        }
+
+        private static void SearchForNextOpeningDate()
+        {
+
+        }
+
+        private static void SearchForOpenedDay()
+        {
+
+        }
+
+        private static void NewOpeningDay()
+        {
+
         }
 
         //Display all days opened
