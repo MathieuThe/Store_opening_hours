@@ -6,7 +6,15 @@ namespace Store_opening_hours
     {
         static void Main(string[] args)
         {
-            //First Move, let's go
+            bool stop = true;
+
+            //We enter to the main while
+            while (stop)
+            {
+                //
+            }
+
+            //Display All Options
             Console.ReadKey();
         }
     }
