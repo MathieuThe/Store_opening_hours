@@ -6,10 +6,7 @@ namespace Store_opening_hours
     {
         static void Main(string[] args)
         {
-
-
-            // ttest
-            //test
+            //First Move, let's go
             Console.ReadKey();
         }
     }
