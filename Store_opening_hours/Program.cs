@@ -13,8 +13,8 @@ namespace Store_opening_hours
             // * Dev * 
             // (Here we add some data for our program
             Days_list.Add(new OpenDay("Monday", "8h00", "17h00"));
-            Days_list.Add(new OpenDay("Thursday_Monday", "8h00", "12h00"));
-            Days_list.Add(new OpenDay("Thursday_Afternon", "14h00", "17h00"));
+            Days_list.Add(new OpenDay("Thursday", "8h00", "12h00"));
+            Days_list.Add(new OpenDay("Friday", "14h00", "17h00"));
 
             
             bool stop = false;
@@ -68,13 +68,13 @@ namespace Store_opening_hours
                 }
 
                 Console.ReadKey();
-
             }
         }
 
         private static void SearchForNextOpeningDate()
         {
-        
+            Console.WriteLine("You are here to search for the opening day");
+
         }
 
         private static void SearchForOpenedDay()
