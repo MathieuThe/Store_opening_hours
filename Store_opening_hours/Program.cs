@@ -11,6 +11,8 @@ namespace Store_opening_hours
             //We enter to the main while
             while (!stop)
             {
+                Console.Clear();
+
                 //Display All Options 
                 Console.WriteLine("Please, choose an option.\n");
                 Console.WriteLine("1 - Display all days opened");
@@ -19,13 +21,11 @@ namespace Store_opening_hours
                 Console.WriteLine("4 - Search for the next opening date ? \n");
                 Console.WriteLine("q - Leave the program \n\n");
 
-                // .... 
-
                 string option = Console.ReadLine();
 
 
                 //debug
-                Console.WriteLine("you choose the option : " + option);
+                //Console.WriteLine("you choose the option : " + option);
 
                 switch (option)
                 {
@@ -58,8 +58,6 @@ namespace Store_opening_hours
                         break;
                 }
 
-                Console.WriteLine("\n\n========================= \n\n\n");
-
                 Console.ReadKey();
 
             }
@@ -90,62 +88,81 @@ namespace Store_opening_hours
         //To create it, we need its name and its time slot (opening time, closing time).
         private static void NewOpeningDay()
         {
+
+            //Asks the user to enter the name of the desired day
+            //Control if it's a real word
+
             bool canStop = false;
-            
-            Console.WriteLine("You are here to create a new day that will be open for your store.");
-
-            Console.WriteLine("First you have to choose the day :");
-            Console.WriteLine(" ** Weekdays **");
-            Console.WriteLine("1 - Monday");
-            Console.WriteLine("2 - Tuesday");
-            Console.WriteLine("3 - Wednesday");
-            Console.WriteLine("4 - Thursday");
-            Console.WriteLine("5 - Friday");
-            Console.WriteLine(" ** Weekend ** ");
-            Console.WriteLine("6 - Saturday");
-            Console.WriteLine("7 - Sunday");
-
-            string option = Console.ReadLine();
-
-            //debug
-            Console.WriteLine("you choose the option : " + option);
-
-            //lets choose the day name to the user
-            string dayName = "";
-            switch (option)
+            while (!canStop)
             {
-                case "1":
-                    break;
+                Console.WriteLine("You are here to create a new day that will be open for your store.");
 
-                case "2":
-                    break;
+                Console.WriteLine("First you have to choose the day :");
+                Console.WriteLine(" ** Weekdays **");
+                Console.WriteLine("1 - Monday");
+                Console.WriteLine("2 - Tuesday");
+                Console.WriteLine("3 - Wednesday");
+                Console.WriteLine("4 - Thursday");
+                Console.WriteLine("5 - Friday");
+                Console.WriteLine(" ** Weekend ** ");
+                Console.WriteLine("6 - Saturday");
+                Console.WriteLine("7 - Sunday");
 
-                case "3":
-                    break;
+                string option = Console.ReadLine();
 
-                case "4":
-                    break;
+                //debug
+                //Console.WriteLine("you choose the option : " + option);
 
-                case "5":
-                    break;
+                //lets choose the day name to the user
+                string dayName = "";
+                switch (option)
+                {
+                    case "1":
+                        dayName = "Monday";
+                        break;
 
-                case "6":
-                    break;
+                    case "2":
+                        dayName = "Tuesday";
+                        break;
 
-                case "7":
-                    break;
+                    case "3":
+                        dayName = "Wednesday";
+                        break;
 
-                default:
-                    Console.WriteLine("your entry is incorrect, please try again...");
-                    break;
+                    case "4":
+                        dayName = "Thursday";
+                        break;
+
+                    case "5":
+                        dayName = "Friday";
+                        break;
+
+                    case "6":
+                        dayName = "Saturday";
+                        break;
+
+                    case "7":
+                        dayName = "Sunday";
+                        break;
+
+                    default:
+                        Console.WriteLine("your entry is incorrect, please try again...");
+                        break;
+                }
+
+                //If dayName is empty, it's because the user wrote an incorrect entry. If not, we can leave the while
+                if (!string.IsNullOrEmpty(dayName))
+                {
+                    Console.WriteLine("You have chosen the day " + dayName);
+                    canStop = true;
+                }
             }
 
 
 
-
             //lets choose the opening day to the user
-            
-            
+            Console.WriteLine("\nplease choose the opening time of the shop");
+
             //lets choose the closing day to the user
 
         }
