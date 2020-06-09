@@ -91,8 +91,9 @@ namespace Store_opening_hours
 
             //Asks the user to enter the name of the desired day
             //Control if it's a real word
-
             bool canStop = false;
+            string dayName = "";
+
             while (!canStop)
             {
                 Console.WriteLine("You are here to create a new day that will be open for your store.");
@@ -110,11 +111,7 @@ namespace Store_opening_hours
 
                 string option = Console.ReadLine();
 
-                //debug
-                //Console.WriteLine("you choose the option : " + option);
-
                 //lets choose the day name to the user
-                string dayName = "";
                 switch (option)
                 {
                     case "1":
@@ -153,18 +150,59 @@ namespace Store_opening_hours
                 //If dayName is empty, it's because the user wrote an incorrect entry. If not, we can leave the while
                 if (!string.IsNullOrEmpty(dayName))
                 {
-                    Console.WriteLine("You have chosen the day " + dayName);
+                    //Console.WriteLine("You have chosen the day " + dayName);
                     canStop = true;
                 }
             }
 
 
 
-            //lets choose the opening day to the user
-            Console.WriteLine("\nplease choose the opening time of the shop");
+            //lets choose the opening day hour
+            Console.WriteLine("\nPlease choose the opening time of the shop\n");
+            string openingHour = Console.ReadLine();
 
-            //lets choose the closing day to the user
+            //lets choose the closing day hour
 
+            Console.WriteLine("\nPlease, choose the closing time of the shop\n");
+            string closingHour = Console.ReadLine();
+
+            Console.WriteLine("You have chosen the day " + dayName);
+            Console.WriteLine("Opening Hours : " + openingHour + " - " + closingHour);
+
+
+            canStop = false;
+            while (!canStop)
+            {
+                Console.WriteLine("Do you want save the entry ? (y) or cancel ? (n) ");
+                
+                string option = Console.ReadLine();
+
+                //lets choose the day name to the user
+                switch (option)
+                {
+                    //We save the entry
+                    case "Y":
+                    case "y":
+                    case "yes":
+                    case "Yes":
+
+                        Console.WriteLine("The entry is saved !");
+                        canStop = true;
+                        break;
+
+                    //we cancel
+                    case "N":
+                    case "n":
+                    case "No":
+                    case "no":
+                        Console.WriteLine("cancellation...");
+                        canStop = true;
+                        break;
+
+                    default:
+                        Console.WriteLine("your entry is incorrect, please try again...");
+                        break;
+                }
         }
 
 
