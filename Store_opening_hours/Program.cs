@@ -174,7 +174,7 @@ namespace Store_opening_hours
             while (!canStop)
             {
                 Console.WriteLine("Do you want save the entry ? (y) or cancel ? (n) ");
-                
+
                 string option = Console.ReadLine();
 
                 //lets choose the day name to the user
@@ -203,8 +203,8 @@ namespace Store_opening_hours
                         Console.WriteLine("your entry is incorrect, please try again...");
                         break;
                 }
+            }
         }
-
 
 
 
