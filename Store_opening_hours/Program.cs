@@ -1,13 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Store_opening_hours
 {
     class Program
     {
+        static private List<OpenDay> Days_list = new List<OpenDay>();
+
         static void Main(string[] args)
         {
-            bool stop = false;
 
+            bool stop = false;
             //We enter to the main while
             while (!stop)
             {
@@ -61,18 +64,18 @@ namespace Store_opening_hours
                 Console.ReadKey();
 
             }
-
-
-            Console.ReadKey();
         }
 
         private static void SearchForNextOpeningDate()
         {
-
+        
         }
 
         private static void SearchForOpenedDay()
         {
+            Console.WriteLine("Are you here to find out if the day you want is open?");
+            Console.WriteLine("Exemple : Monday");
+
 
         }
 
@@ -159,11 +162,14 @@ namespace Store_opening_hours
 
             //lets choose the opening day hour
             Console.WriteLine("\nPlease choose the opening time of the shop\n");
+            Console.WriteLine("Example : 8h00");
             string openingHour = Console.ReadLine();
 
             //lets choose the closing day hour
 
             Console.WriteLine("\nPlease, choose the closing time of the shop\n");
+            Console.WriteLine("Example : 17h15");
+
             string closingHour = Console.ReadLine();
 
             Console.WriteLine("You have chosen the day " + dayName);
@@ -185,7 +191,7 @@ namespace Store_opening_hours
                     case "y":
                     case "yes":
                     case "Yes":
-
+                        Days_list.Add(new OpenDay(dayName, openingHour, closingHour));
                         Console.WriteLine("The entry is saved !");
                         canStop = true;
                         break;
@@ -195,7 +201,7 @@ namespace Store_opening_hours
                     case "n":
                     case "No":
                     case "no":
-                        Console.WriteLine("cancellation...");
+                        Console.WriteLine("Cancellation...");
                         canStop = true;
                         break;
 
@@ -222,7 +228,11 @@ namespace Store_opening_hours
         //Display all days opened
         private static void DisplayDaysOpened()
         {
-            Console.WriteLine(" -- All Days --");
+            //Read the list and simply display-it
+            for (int i = 0; i < Days_list.Count; i++)
+            {
+                Console.WriteLine(Days_list[i].GetDayName + " : " + Days_list[i].GetOpeningHour + " - " + Days_list[i].GetClosingHour);
+            }
         }
     }
 }
