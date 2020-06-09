@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text.RegularExpressions;
 
 namespace Store_opening_hours
 {
@@ -9,7 +10,13 @@ namespace Store_opening_hours
 
         static void Main(string[] args)
         {
+            // * Dev * 
+            // (Here we add some data for our program
+            Days_list.Add(new OpenDay("Monday", "8h00", "17h00"));
+            Days_list.Add(new OpenDay("Thursday_Monday", "8h00", "12h00"));
+            Days_list.Add(new OpenDay("Thursday_Afternon", "14h00", "17h00"));
 
+            
             bool stop = false;
             //We enter to the main while
             while (!stop)
@@ -55,7 +62,6 @@ namespace Store_opening_hours
                         stop = true;
                         break;
 
-
                     default:
                         Console.WriteLine("your entry is incorrect, please try again...");
                         break;
@@ -73,19 +79,33 @@ namespace Store_opening_hours
 
         private static void SearchForOpenedDay()
         {
-            Console.WriteLine("Are you here to find out if the day you want is open?");
+            Console.WriteLine("Are you here to find out if the day you want is open ?");
             Console.WriteLine("Exemple : Monday");
+
+            string date = Console.ReadLine();
+
+            //Read the list and search into-it if there is a match
+            IsOpenOn(date);
+
+           
+        }
+
+        private static void IsOpenOn(string date)
+        {
+            //if we find something we could track back the information
+            bool hasFindSomething = false;
+
+            for (int i = 0; i < Days_list.Count; i++)
+            {
+                //If there's a match (exemple : afternon_MONDAY for monday), we display it
+                if (Regex.IsMatch(date, Days_list[i].GetDayName))
+                {
+                    Console.WriteLine(Days_list[i].GetDayName + " : " + Days_list[i].GetOpeningHour + " - " + Days_list[i].GetClosingHour);
+                }
+            }
 
 
         }
-
-
-
-
-
-
-
-
 
         //Create a new openingDay.
         //To create it, we need its name and its time slot (opening time, closing time).
@@ -211,19 +231,6 @@ namespace Store_opening_hours
                 }
             }
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
         //Display all days opened
         private static void DisplayDaysOpened()
