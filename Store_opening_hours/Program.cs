@@ -85,12 +85,14 @@ namespace Store_opening_hours
             string date = Console.ReadLine();
 
             //Read the list and search into-it if there is a match
-            IsOpenOn(date);
-
-           
+            //If there is no match, we send a message
+            if(!IsOpenOn(date))
+            {
+                Console.WriteLine("Sorry, we find nothing about this date.");
+            }
         }
 
-        private static void IsOpenOn(string date)
+        private static bool IsOpenOn(string date)
         {
             //if we find something we could track back the information
             bool hasFindSomething = false;
@@ -101,10 +103,10 @@ namespace Store_opening_hours
                 if (Regex.IsMatch(date, Days_list[i].GetDayName))
                 {
                     Console.WriteLine(Days_list[i].GetDayName + " : " + Days_list[i].GetOpeningHour + " - " + Days_list[i].GetClosingHour);
+                    hasFindSomething = true;
                 }
             }
-
-
+            return hasFindSomething;
         }
 
         //Create a new openingDay.
