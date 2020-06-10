@@ -10,15 +10,13 @@ namespace Store_opening_hours
 
         static void Main(string[] args)
         {
-            // * Dev * 
-            // (Here we add some data for our program
+            //Here we add some data for test our program
             Days_list.Add(new OpenDay("Monday", "8h00", "17h00"));
             Days_list.Add(new OpenDay("Thursday", "8h00", "12h00"));
             Days_list.Add(new OpenDay("Friday", "14h00", "17h00"));
 
-            
-            bool stop = false;
             //We enter to the main while
+            bool stop = false;
             while (!stop)
             {
                 Console.Clear();
@@ -27,16 +25,15 @@ namespace Store_opening_hours
                 Console.WriteLine("Please, choose an option.\n");
                 Console.WriteLine("1 - Display all opening days");
                 Console.WriteLine("2 - Add a new opening day");
-                Console.WriteLine("3 - Is that day an openning day ?");
+                Console.WriteLine("3 - Is that day an opening day ?");
                 Console.WriteLine("4 - Search for the next opening date \n");
                 Console.WriteLine("q - Leave the program \n\n");
 
+                //Read the user's entry and put-it into a variable
                 string option = Console.ReadLine();
 
-
-                //debug
-                //Console.WriteLine("you choose the option : " + option);
-
+                //Start the good option with the selected entry
+                //if the user select something wrong (ex: 5, 6, "adse", etc), the 'default' case will say an error message.
                 switch (option)
                 {
                     case "1":
@@ -55,22 +52,25 @@ namespace Store_opening_hours
                         SearchForNextOpeningDate();
                         break;
 
-                    //If the option is 'q', we set the variable Stop to true
+                    //If the option is 'q', we set the variable Stop to true, so, we leave the main while and exit the program.
                     case "Q":
                     case "q":
-                        Console.WriteLine("you have chosen to close the program.");
+                        Console.WriteLine("You have chosen to close the program.");
                         stop = true;
                         break;
 
                     default:
-                        Console.WriteLine("your entry is incorrect, please try again...");
+                        Console.WriteLine("Your entry is incorrect, please try again...");
                         break;
                 }
-
                 Console.ReadKey();
             }
         }
 
+        /// <summary>
+        /// This method is used to display some messages and ask to the user to choose a date.
+        /// After That, it will use the method 'NextOpeningDate' and return  an error message if it's necessary.
+        /// </summary>
         private static void SearchForNextOpeningDate()
         {
             Console.WriteLine("You are here to search for the next opening day");
@@ -78,15 +78,16 @@ namespace Store_opening_hours
 
             string date = Console.ReadLine();
 
-            //Read the list and search into-it if there is a match (if there, we display the next day)
-            //If there is no match, we send a message
+            //Lunch 'NextOpeningDate'. If there is no match, we send an error message
             if (!NextOpeningDate(date))
-            {
                 Console.WriteLine("Sorry, we find nothing about this date.");
-            }
 
         }
 
+        /// <summary>
+        /// This method is used to search for the next opening date
+        /// Read the list and search into-it if there is a match (if there, we display the next day)
+        /// </summary>
         private static bool NextOpeningDate(string date)
         {
             //If we find something we could track back the information
@@ -94,7 +95,7 @@ namespace Store_opening_hours
 
             for (int i = 0; i < Days_list.Count; i++)
             {            
-                //If there's a match (exemple : afternon_MONDAY for monday), we display it
+                //If there's a match, we display it
                 if (Regex.IsMatch(date, Days_list[i].GetDayName))
                 {
                     //Avoid stack overflow problem
@@ -105,12 +106,12 @@ namespace Store_opening_hours
                     }
                 }
             }
-
             return hasFindSomething;
         }
 
         /// <summary>
-        /// search for an opening day
+        /// This method is used to display some messages and ask to the user to choose a date.
+        /// After that, it will use the method 'IsOpenOn'ee
         /// </summary>
         private static void SearchForOpenedDay()
         {
@@ -127,8 +128,12 @@ namespace Store_opening_hours
             }
         }
 
-        //find the opening day and display-it 
-        //return too a bool to know if it was a match or.. no
+        /// <summary>
+        /// Check if the day in an opening day and if yes, display-it 
+        /// Return false if there's no match
+        /// </summary>
+        /// <param name="date"></param>
+        /// <returns></returns>
         private static bool IsOpenOn(string date)
         {
             //if we find something we could track back the information
@@ -136,7 +141,7 @@ namespace Store_opening_hours
 
             for (int i = 0; i < Days_list.Count; i++)
             {
-                //If there's a match (exemple : afternon_MONDAY for monday), we display it
+                //If there's a match, we display it
                 if (Regex.IsMatch(date, Days_list[i].GetDayName))
                 {
                     Console.WriteLine(Days_list[i].GetDayName + " : " + Days_list[i].GetOpeningHour + " - " + Days_list[i].GetClosingHour);
@@ -146,13 +151,16 @@ namespace Store_opening_hours
             return hasFindSomething;
         }
 
-        //Create a new openingDay.
-        //To create it, we need its name and its time slot (opening time, closing time).
+        /// <summary>
+        /// Create a new openingDay.
+        /// To create it, we need its name and its work time slot (opening time, closing time).
+        /// Example : Monday, 8h00, 17h00.
+        /// </summary>
         private static void NewOpeningDay()
         {
-
             //Asks the user to enter the name of the desired day
-            //Control if it's a real word
+            //Control if it's a real day
+
             bool canStop = false;
             string dayName = "";
 
@@ -161,7 +169,7 @@ namespace Store_opening_hours
                 Console.WriteLine("You are here to create a new day that will be open for your store.");
 
                 Console.WriteLine("First you have to choose the day :");
-                Console.WriteLine(" ** Weekdays **");
+                Console.WriteLine(" ** Weekdays ** ");
                 Console.WriteLine("1 - Monday");
                 Console.WriteLine("2 - Tuesday");
                 Console.WriteLine("3 - Wednesday");
@@ -174,6 +182,7 @@ namespace Store_opening_hours
                 string option = Console.ReadLine();
 
                 //lets choose the day name to the user
+                //If the day it's wrong, we display an error message
                 switch (option)
                 {
                     case "1":
@@ -205,19 +214,16 @@ namespace Store_opening_hours
                         break;
 
                     default:
-                        Console.WriteLine("your entry is incorrect, please try again...");
+                        Console.WriteLine("Your entry is incorrect, please try again...");
                         break;
                 }
 
-                //If dayName is empty, it's because the user wrote an incorrect entry. If not, we can leave the while
+                //If dayName is empty, it's because the user wrote an incorrect entry and the switch case go to the default case.
+                //If not, we can leave the while
                 if (!string.IsNullOrEmpty(dayName))
-                {
-                    //Console.WriteLine("You have chosen the day " + dayName);
                     canStop = true;
-                }
+
             }
-
-
 
             //lets choose the opening day hour
             Console.WriteLine("\nPlease choose the opening time of the shop\n");
@@ -225,7 +231,6 @@ namespace Store_opening_hours
             string openingHour = Console.ReadLine();
 
             //lets choose the closing day hour
-
             Console.WriteLine("\nPlease, choose the closing time of the shop\n");
             Console.WriteLine("Example : 17h15");
 
@@ -265,7 +270,7 @@ namespace Store_opening_hours
                         break;
 
                     default:
-                        Console.WriteLine("your entry is incorrect, please try again...");
+                        Console.WriteLine("Your entry is incorrect, please try again...");
                         break;
                 }
             }
