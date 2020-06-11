@@ -73,6 +73,8 @@ namespace Store_opening_hours
         /// </summary>
         private static void SearchForNextOpeningDate()
         {
+            Console.Clear();
+
             Console.WriteLine("You are here to search for the next opening day");
             Console.WriteLine("Exemple : Thursday");
 
@@ -115,6 +117,8 @@ namespace Store_opening_hours
         /// </summary>
         private static void SearchForOpenedDay()
         {
+            Console.Clear();
+
             Console.WriteLine("Are you here to find out if the day you want is open ?");
             Console.WriteLine("Exemple : Monday");
 
@@ -166,6 +170,8 @@ namespace Store_opening_hours
 
             while (!canStop)
             {
+                Console.Clear();
+
                 Console.WriteLine("You are here to create a new day that will be open for your store.");
 
                 Console.WriteLine("First you have to choose the day :");
@@ -236,6 +242,7 @@ namespace Store_opening_hours
 
             string closingHour = Console.ReadLine();
 
+            Console.Clear();
             Console.WriteLine("You have chosen the day " + dayName);
             Console.WriteLine("Opening Hours : " + openingHour + " - " + closingHour);
 
@@ -243,7 +250,7 @@ namespace Store_opening_hours
             canStop = false;
             while (!canStop)
             {
-                Console.WriteLine("Do you want save the entry ? (y) or cancel ? (n) ");
+                Console.WriteLine("\nDo you want save the entry ? (y) or cancel ? (n) ");
 
                 string option = Console.ReadLine();
 
@@ -279,6 +286,8 @@ namespace Store_opening_hours
         //Display all days opened
         private static void DisplayDaysOpened()
         {
+            Console.Clear();
+            Console.WriteLine("[Display opening days ]\n");
             //Read the list and simply display-it
             for (int i = 0; i < Days_list.Count; i++)
             {
